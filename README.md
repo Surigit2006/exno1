@@ -21,6 +21,40 @@ STEP 5: Remove outliers using IQR
 STEP 6: Use zscore of to remove outliers
 
 # Coding and Output
+# Handling null values
+```
+import pandas as pd
+
+df=pd.read_csv(r"C:\Users\Suriya\Downloads\Data_set (1).csv")
+
+df
+```
+```
+df.isnull().sum()
+```
+```
+df.isnull().any()
+```
+```
+df.dropna()
+```
+```
+f.fillna(0)
+```
+```
+df.fillna(method = 'ffill')
+```
+```
+df.fillna(method = 'bfill')
+```
+```
+df_dropped=df.dropna()
+df_dropped
+```
+```
+df.fillna({"show_name":"breaking bad","country":"america","aired_on":"monday,saturday","original_network":"KBS2","rating":9.6,"current_overall_rank":880.0,"lifetime_popularity_rank":1,"watchers":126795.0})
+```
+
             <<include your coding and its corressponding output screen shots here>>
 # Result
           <<include your Result here>>
