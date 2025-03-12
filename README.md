@@ -138,7 +138,7 @@ delid
 
 
 ```
-
+sns.boxplot(x='sepal_width',data=delid)
 
 
 ```
@@ -199,6 +199,9 @@ z = np.abs(stats.zscore(dataset['height']))
 z
 
 ```
+
+
+![Screenshot 2025-03-12 135645](https://github.com/user-attachments/assets/3109d922-3c9a-4ac6-8295-71b3bb02a0e0)
 
 
 ```
