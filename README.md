@@ -139,11 +139,7 @@ delid
 
 ```
 
-import matplotlib.pyplot as plt
-import numpy as np
-import scipy.stats as stats
-dataset=pd.read_csv(r"C:\Users\Suriya\Downloads\heights.csv")
-dataset
+
 
 ```
 ![Screenshot 2025-03-12 135609](https://github.com/user-attachments/assets/6d9491cd-1309-4b11-a1bf-299878b8df1f)
@@ -151,27 +147,33 @@ dataset
 
 
 ```
-q1 = dataset['height'].quantile(0.25)
-q2 = dataset['height'].quantile(0.5)
-q3 = dataset['height'].quantile(0.75)
-iqr = q3-q1
-iqr
+import matplotlib.pyplot as plt
+import numpy as np
+import scipy.stats as stats
+dataset=pd.read_csv(r"C:\Users\Suriya\Downloads\heights.csv")
+dataset
+
 ```
 
 ![Screenshot 2025-03-12 135616](https://github.com/user-attachments/assets/4dd4c98f-b33b-46e4-83e4-2d5368aeddc6)
 
 ```
-low = q1- 1.5*iqr
-low
+q1 = dataset['height'].quantile(0.25)
+q2 = dataset['height'].quantile(0.5)
+q3 = dataset['height'].quantile(0.75)
+iqr = q3-q1
+iqr
+
 ```
 ![Screenshot 2025-03-12 135623](https://github.com/user-attachments/assets/da2b43da-3102-4638-9333-84d4ec86f068)
 
 
 
 ```
+low = q1- 1.5*iqr
+low
 
-high = q3 + 1.5*iqr
-high
+
 ```
 
 ![Screenshot 2025-03-12 135629](https://github.com/user-attachments/assets/aee6bcf3-e614-4830-bfda-96b81d944294)
@@ -184,17 +186,25 @@ df1
 
 
 ```
-z = np.abs(stats.zscore(dataset['height']))
-z
+high = q3 + 1.5*iqr
+high
+
 ```
 
 ![Screenshot 2025-03-12 135639](https://github.com/user-attachments/assets/47c3da53-4545-4b85-98ea-64a61c963d78)
 
 
 ```
+z = np.abs(stats.zscore(dataset['height']))
+z
+
+```
+
+
+```
 df1 = dataset[z<3]
 df1
-```  
+```
 
 ![Screenshot 2025-03-12 135651](https://github.com/user-attachments/assets/10950a74-04a2-421d-9e89-9302e1c8d0ec)
 
