@@ -179,13 +179,6 @@ low
 ![Screenshot 2025-03-12 135629](https://github.com/user-attachments/assets/aee6bcf3-e614-4830-bfda-96b81d944294)
 
 ```
-df1 = dataset[((dataset['height'] >=low)& (dataset['height'] <=high))]
-df1
-```
-![Screenshot 2025-03-12 135633](https://github.com/user-attachments/assets/5d5da814-64ac-4aac-a60a-7ac7f847e634)
-
-
-```
 high = q3 + 1.5*iqr
 high
 
@@ -193,6 +186,15 @@ high
 
 ![Screenshot 2025-03-12 135639](https://github.com/user-attachments/assets/47c3da53-4545-4b85-98ea-64a61c963d78)
 
+
+```
+df1 = dataset[((dataset['height'] >=low)& (dataset['height'] <=high))]
+df1
+```
+![Screenshot 2025-03-12 135633](https://github.com/user-attachments/assets/5d5da814-64ac-4aac-a60a-7ac7f847e634)
+
+
+```
 
 ```
 z = np.abs(stats.zscore(dataset['height']))
