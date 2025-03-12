@@ -85,6 +85,121 @@ df.fillna({"show_name":"breaking bad","country":"america","aired_on":"monday,sat
 ![Screenshot 2025-03-07 161804](https://github.com/user-attachments/assets/c8c082bb-7394-48de-b370-b190804e8014)
 
 
-            <<include your coding and its corressponding output screen shots here>>
+
+# Outliers
+
+```
+import pandas as pd
+ir=pd.read_csv(r"C:\Users\Suriya\Downloads\iris (1).csv")
+ir
+```
+![Screenshot 2025-03-12 135527](https://github.com/user-attachments/assets/2c9a3093-22d9-4675-9e04-5199303e3d77)
+
+
+```
+ir.describe()
+```
+
+![Screenshot 2025-03-12 135535](https://github.com/user-attachments/assets/b7bf04db-d7c2-450d-b23e-55372aa30df9)
+
+
+```
+import seaborn as sns
+sns.boxplot(x='sepal_width',data=ir)
+```
+![Screenshot 2025-03-12 135541](https://github.com/user-attachments/assets/6b44e9f0-bc43-425e-9979-d91cd5d7db1d)
+
+
+
+```
+
+ q1=ir.sepal_width.quantile(0.25)
+ q3=ir.sepal_width.quantile(0.75)
+ iq=q3-q1
+ print(iq)
+```
+
+![Screenshot 2025-03-12 135550](https://github.com/user-attachments/assets/4988ddea-d01d-4489-973d-547f7410d052)
+
+
+```
+ rid=ir[((ir.sepal_width<(q1-1.5*iq))|(ir.sepal_width>(q3+1.5*iq)))]
+ rid['sepal_width']
+```
+![Screenshot 2025-03-12 135556](https://github.com/user-attachments/assets/bd064582-6021-4024-8b30-27ea4deca1a4)
+
+
+```
+delid=ir[~((ir.sepal_width<(q1-1.5*iq))|(ir.sepal_width>(q3+1.5*iq)))]
+delid
+```
+
+![Screenshot 2025-03-12 135603](https://github.com/user-attachments/assets/bdab787b-a2d7-40ea-8d5b-e056f3273ebd)
+
+
+```
+
+import matplotlib.pyplot as plt
+import numpy as np
+import scipy.stats as stats
+dataset=pd.read_csv(r"C:\Users\Suriya\Downloads\heights.csv")
+dataset
+
+```
+![Screenshot 2025-03-12 135609](https://github.com/user-attachments/assets/6d9491cd-1309-4b11-a1bf-299878b8df1f)
+
+
+
+```
+q1 = dataset['height'].quantile(0.25)
+q2 = dataset['height'].quantile(0.5)
+q3 = dataset['height'].quantile(0.75)
+iqr = q3-q1
+iqr
+```
+
+![Screenshot 2025-03-12 135616](https://github.com/user-attachments/assets/4dd4c98f-b33b-46e4-83e4-2d5368aeddc6)
+
+```
+low = q1- 1.5*iqr
+low
+```
+![Screenshot 2025-03-12 135623](https://github.com/user-attachments/assets/da2b43da-3102-4638-9333-84d4ec86f068)
+
+
+
+```
+
+high = q3 + 1.5*iqr
+high
+```
+
+![Screenshot 2025-03-12 135629](https://github.com/user-attachments/assets/aee6bcf3-e614-4830-bfda-96b81d944294)
+
+```
+df1 = dataset[((dataset['height'] >=low)& (dataset['height'] <=high))]
+df1
+```
+![Screenshot 2025-03-12 135633](https://github.com/user-attachments/assets/5d5da814-64ac-4aac-a60a-7ac7f847e634)
+
+
+```
+z = np.abs(stats.zscore(dataset['height']))
+z
+```
+
+![Screenshot 2025-03-12 135639](https://github.com/user-attachments/assets/47c3da53-4545-4b85-98ea-64a61c963d78)
+
+
+```
+df1 = dataset[z<3]
+df1
+```  
+
+![Screenshot 2025-03-12 135651](https://github.com/user-attachments/assets/10950a74-04a2-421d-9e89-9302e1c8d0ec)
+
+
+
+
 # Result
           <<include your Result here>>
